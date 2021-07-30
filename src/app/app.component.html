@@ -1,0 +1,26 @@
+<form [formGroup]="form" >
+  <label for="fieldOne">fieldOne: </label>
+  <input type="text" id="fieldOne" class="form-control" formControlName="fieldOne" required>
+
+  <label for="fieldTwo">fieldTwo: </label>
+  <input type="text" id="fieldTwo" class="form-control" formControlName="fieldTwo" required>
+</form>
+
+<div>
+  <div *ngIf="fieldOne?.invalid && (fieldOne?.dirty || fieldOne?.touched)">
+    <div *ngIf="fieldOne?.errors?.required">
+      fieldOne is required.
+    </div>
+  </div>
+
+  <div *ngIf="fieldTwo?.invalid && (fieldTwo?.dirty || fieldOne?.touched)">
+    <div *ngIf="fieldTwo?.errors?.required">
+      fieldTwo is required.
+    </div>
+  </div>
+
+  <div *ngIf="form.errors?.matchField">
+      fieldOne match fieldTwo.
+  </div>
+
+</div>
